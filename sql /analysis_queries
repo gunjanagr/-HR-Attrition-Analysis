@@ -1,0 +1,65 @@
+query1 = """
+SELECT Department,
+       COUNT(*) as Total,
+       SUM(Attrition_Flag) as Left,
+       ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY Department
+ORDER BY Attrition_Rate DESC
+"""
+query2 = """
+SELECT JobRole,
+       COUNT(*) as Total,
+       SUM(Attrition_Flag) as Left,
+       ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY JobRole
+ORDER BY Attrition_Rate DESC
+"""
+query3 = """
+SELECT Attrition,
+       ROUND(AVG(MonthlyIncome), 2) as Avg_Salary
+FROM hr
+GROUP BY Attrition
+"""
+query4 = """
+SELECT OverTime,
+       COUNT(*) as Total,
+       SUM(Attrition_Flag) as Left,
+       ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY OverTime
+"""
+query5 = """
+SELECT 
+  CASE 
+    WHEN Age < 25 THEN 'Under 25'
+    WHEN Age BETWEEN 25 AND 34 THEN '25-34'
+    WHEN Age BETWEEN 35 AND 44 THEN '35-44'
+    ELSE '45+' 
+  END as Age_Group,
+  COUNT(*) as Total,
+  SUM(Attrition_Flag) as Left,
+  ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY Age_Group
+ORDER BY Attrition_Rate DESC
+"""
+query6 = """
+SELECT YearsAtCompany,
+       COUNT(*) as Total,
+       SUM(Attrition_Flag) as Left,
+       ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY YearsAtCompany
+ORDER BY YearsAtCompany
+"""
+query7 = """
+SELECT JobSatisfaction,
+       COUNT(*) as Total,
+       SUM(Attrition_Flag) as Left,
+       ROUND(SUM(Attrition_Flag)*100.0/COUNT(*), 2) as Attrition_Rate
+FROM hr
+GROUP BY JobSatisfaction
+ORDER BY JobSatisfaction
+"""
